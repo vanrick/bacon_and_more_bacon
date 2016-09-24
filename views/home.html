@@ -1,0 +1,113 @@
+<div class="container">
+  <h2>Welcome to Bacon and more Bacon!</h2>
+  <p>Everything is better wtih Bacon!</p>
+  <div class="btn-group">
+  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+    Category:
+  <span class="caret"></span></button>
+  <div ng-model='selectCategory'class="dropdown-menu col-sm-4">
+    <ul>
+      <solid><u><li ng-click="selectCategory = ''"><a href="#">category</a></li></u></solid>
+      <li ng-repeat='merge in view.mergy' ng-class="{active : isSelected(selectCategory)}"><a class='active'ng-model='selectCategory' ng-click="setMaster(merge)">{{merge}}</a></li>
+      <!-- <li ng-click="selectCategory = 'dark'"><a href="#">dark</a></li>
+      <li ng-click="selectCategory = 'cold'"><a href="#">cold</a></li>
+      <li ng-click="selectCategory = 'awesome'"><a href="#">awesome</a></li>
+      <li ng-click="selectCategory = 'dry'"><a href="#">dry</a></li>
+      <li ng-click="selectCategory = 'hot'"><a href="#">hot</a></li>
+      <li ng-click="selectCategory = 'summer'"><a href="#">summer</a></li>
+      <li ng-click="selectCategory = 'lucid'"><a href="#">lucid</a></li>
+      <li ng-click="selectCategory = 'warm'"><a href="#">warm</a></li>
+      <li ng-click="selectCategory = 'winter'"><a href="#">winter</a></li>
+      <li ng-click="selectCategory = 'spring'"><a href="#">spring</a></li> -->
+    </ul>
+  </div>
+  <div class="form-group col-sm-6">
+    <input ng-model='search' type="text" class="form-control" id="usr" placeholder="Search">
+  </div>
+  <div class='checkoutBtn'><a href="/checkout"><button type="button" class="btn btn-default btn-danger"><span class="fa fa-close"></span>Checkout|Bag: {{view.numberOfItems == 0 ? 'Empty!' : view.numberOfItems}}</button></a></div>
+</div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Bacon</th>
+        <th>Information</th>
+
+   <th><div class="dropdown" ng-model="selectOrder">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By Price:
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li ng-click="selectOrder = '-price'"><a href="#">Highest</a></li>
+      <li ng-click="selectOrder = 'price'"><a href="#" >Lowest</a></li>
+    </ul>
+  </div></th>
+
+      </tr>
+    </thead>
+    <tbody ng-repeat="post in view.teaData | filter:search | orderBy:selectOrder | filter:{categories:selected}">
+      <tr>
+        <a ng-href='{{post._id}}'><td><img class='thumb_pics' ng-src="{{post.imageUrl}}" alt="" /></a>
+        </td>
+        <a ng-href='{{post._id}}'><td>
+          <h1>{{post.name}}</h1>
+          <div class="next"><h4>Price:</h4> {{post.price/100 | currency:" $"}}</div>
+          <div class="next"><h4>Crispy Scale:</h4>{{post.caffeineScale}}</div>
+          <div class="next"><h4>Description:</h4> {{post.ingredients}}</div>
+          <div class="next"><h4>Rating:</h4> {{post.rating}}</div>
+          <div class="next"><h4>In Stock:</h4> {{post.inStock == true ? 'Yes' : 'No'}}</div>
+          <h4>Categories:</h4>
+          <h5 ng-repeat='cat in post.categories'>
+            {{cat}}
+          </h5>
+        </td></a>
+
+        <td>
+
+        Quantity:
+         <select ng-model='selectQuantity' class="" name="1" value=''>
+           <option value='1'>1</option>
+           <option value='2'>2</option>
+           <option value='3'>3</option>
+           <option value='4'>4</option>
+           <option value='5'>5</option>
+           <option value='6'>6</option>
+           <option value='7'>7</option>
+           <option value='8'>8</option>
+           <option value='9'>9</option>
+           <option value='10'>10</option>
+         </select>
+         <a ng-href='{{post._id}}'><button ng-click='view.addBag(post,selectQuantity)'type="button" name="button">Add to Bag</button></a>
+         </td>
+         <!-- stretch -->
+         `<!-- <td> -->`
+           <!-- <section ng-class='view.stretch()'class="content">
+  <div class="box gauge--1">
+    <div class="mask">
+    	<div class="semi-circle"></div>
+    	<div class="semi-circle--mask"></div>
+    </div>
+  </div>
+
+    <div class="box gauge--2">
+      <div class="mask">
+        <div class="semi-circle"></div>
+        <div class="semi-circle--mask"></div>
+      </div>
+  </div>
+
+      <div class="box gauge--3">
+        <div class="mask">
+          <div class="semi-circle"></div>
+          <div class="semi-circle--mask"></div>
+        </div>
+      </div>
+</section>
+
+<a href="http://www.twitter.com/sambego" alt="Sambego on twitter" class="btn--twitter" target="_blank">
+  <i class="fa fa-twitter"></i>
+</a>
+         </td> -->
+         <!-- stretch -->
+      </tr>
+    </tbody>
+  </table>
+</div>

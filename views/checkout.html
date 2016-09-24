@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Welcome to MEAN tea!</h2>
+  <p>Guaranteed Awesome!</p>
+  <br>
+  <div class="">
+    <h2 id='order_total'>My Shopping Bag!</h2>
+    <div class="">
+      <h2 id='order_total2'>Order Total: {{view.order_total.running_total/100 | currency}}
+      <button ng-click="view.refresh()"class='btn orange_btn'type="button" name="button">CheckOut</button></h2>
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Sub-Total</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="post in view.inventory">
+      <tr>
+       <td>
+         <img class='thumb_pics' ng-src="{{post.imageUrl}}" alt="" />
+          <h1>{{post.name}}</h1>
+          <!-- <div class="next"><h4>Price:</h4> {{post.price/100 | currency:" $"}}</div> -->
+          <div class="next"><h4>Caffeine Scale:</h4>{{post.caffeineScale}}</div>
+          <div class="next"><h4>Ingredients:</h4> {{post.ingredients}}</div>
+          <div class="next"><h4>Rating:</h4> {{post.rating}}</div>
+        </td>
+         <div class="">
+           <td ng-show='!showQuantity'id='bold_it'>
+             {{post.order_quantity}}
+           </td>
+         </div>
+           <td ng-show='showQuantity'>
+             <select ng-model='newQuantity' class="" name="1" value=''>
+               <option value='1'>1</option>
+               <option value='2'>2</option>
+               <option value='3'>3</option>
+               <option value='4'>4</option>
+               <option value='5'>5</option>
+               <option value='6'>6</option>
+               <option value='7'>7</option>
+               <option value='8'>8</option>
+               <option value='9'>9</option>
+               <option value='10'>10</option>
+             </select>
+           </td>
+         <td id='bold_it'>
+           {{post.order_quantity * post.price/100 | currency}}
+         </td>
+          <td>
+
+            <button ng-click='view.toggle_quantity()' ng-show='!showEdit' ng-model='showEdit' class='btn orange_btn'type="button" name="button">Edit</button>
+
+            <button ng-click='view.edit_one(post,newQuantity)' ng-show='showEdit' class='btn orange_btn'type="button" name="button">Save</button>
+
+          <button ng-click='view.delete_one(post)' class='btn red_btn'type="button" name="button">Remove</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
