@@ -1,20 +1,20 @@
 <div class="container">
-  <h2>Welcome to MEAN tea!</h2>
-  <p>Guaranteed Awesome!</p>
+  <h2 class='white'>Bacon and more Bacon!</h2>
+  <p class='white'>Everything is better with Bacon!</p>
   <br>
   <div class="">
-    <h2 id='order_total'>My Shopping Bag!</h2>
+    <h2 id='order_total' class='white'>My Shopping Bag!</h2>
     <div class="">
-      <h2 id='order_total2'>Order Total: {{view.order_total.running_total/100 | currency}}
+      <h2 id='order_total2' class='white'>Order Total: {{view.order_total.running_total/100 | currency}}
       <button ng-click="view.refresh()"class='btn orange_btn'type="button" name="button">CheckOut</button></h2>
     </div>
   </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Sub-Total</th>
+        <th class='white'>Product</th>
+        <th class='white'>Quantity</th>
+        <th class='white'>Sub-Total</th>
       </tr>
     </thead>
     <tbody ng-repeat="post in view.inventory">

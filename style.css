@@ -1,3 +1,16 @@
+body{
+  background-color: #72231F;
+}
+tbody{
+  background-color: white;
+}
+.white{
+  color: white;
+}
+.navbar{
+  background-color: #72231F;
+  color: white;
+}
 .omdb{
   height: 30vh;
   width: 100%;
